@@ -1,0 +1,1 @@
+# Sintaxe string_final = “conector”.join(iteravel)

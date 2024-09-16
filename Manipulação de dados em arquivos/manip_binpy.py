@@ -1,4 +1,4 @@
-#Stiuação-problema: Em uma pequena empresa de design gráfico, surgiu a necessidade de implementar um sistema capaz de manipular imagens para uso em diferentes campanhas publicitárias. O gerente do projeto solicitou uma ferramenta que permita aos designers visualizarem, manipularem e criarem cópias de imagens no formato binário para entender melhor a estrutura de dados de imagens e explorar efeitos criativos através da manipulação direta desses dados.
+#Situação-problema: Em uma pequena empresa de design gráfico, surgiu a necessidade de implementar um sistema capaz de manipular imagens para uso em diferentes campanhas publicitárias. O gerente do projeto solicitou uma ferramenta que permita aos designers visualizarem, manipularem e criarem cópias de imagens no formato binário para entender melhor a estrutura de dados de imagens e explorar efeitos criativos através da manipulação direta desses dados.
 
 
 #Objetivos do programa: Objetivos do programa

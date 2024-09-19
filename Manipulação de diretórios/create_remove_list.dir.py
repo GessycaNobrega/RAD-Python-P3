@@ -45,3 +45,24 @@ print("Término do programa")
 
 #Listando conteúdo de diretórios
 # Sua sintaxe é a seguinte: os.scandir(caminho)
+
+
+import os 
+
+try: 
+
+    entrada = os.scandir("meu_diretorio")
+    for obj in entrada:
+        print(obj)
+        print("Nome:", obj.name)
+        print("Caminho:", obj.path)
+        print("É diretório:", obj.is_dir())
+        print("É arquivo:", obj.is_file())
+
+        if obj.is_file():
+            print("Tamanhanho:", obj.stat().st_size, "B")
+            print("======================")
+except FileNotFoundError:
+    print("O caminho não existe.")
+except NotADirectoryError:
+    print("O caminho não é de um diretório")

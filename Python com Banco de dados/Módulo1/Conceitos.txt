@@ -1,0 +1,20 @@
+Exemplo de padrões definidos pela DB-API 2.0:
+
+Nomes de métodos:
+close, commit e cursor
+
+Nomes de Classes:
+Connection e Cursor
+
+Tipos de exceção:
+IntegrityError e InternalError
+
+*********************************************************************
+
+Como exemplo de conectores que implementam a DB-API 2.0, temos:
+
+psycopg2: Conector mais utilizado para o banco de dados PostgreSQL.
+
+mysqlclient, PyMySQL e mysql-connector-python: Conectores para o banco de dados MySQL.
+
+sqlite3: Adaptador padrão do Python para o banco de dados SQLite

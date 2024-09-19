@@ -18,3 +18,5 @@ psycopg2: Conector mais utilizado para o banco de dados PostgreSQL.
 mysqlclient, PyMySQL e mysql-connector-python: Conectores para o banco de dados MySQL.
 
 sqlite3: Adaptador padrão do Python para o banco de dados SQLite
+
+Aplicações CRUD: Create, Read, Update,  Delete

@@ -1,7 +1,0 @@
-Para se conectar a um banco de dados SQLite, basta chamar a função connect do módulo sqlite3, passando como argumento o caminho para o arquivo que contém o banco de dados.
-
-
->>> import sqlite3
->>> conexao = sqlite3.connect('meu_banco.db')
-
-Isso é o suficiente para termos uma conexão com o banco de dados meu_banco.db e iniciar o envio de comandos SQL para criar tabelas e inserir registros.

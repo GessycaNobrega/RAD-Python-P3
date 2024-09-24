@@ -35,6 +35,6 @@ except conector.DatabaseError as err:
 finally:
     # Fechamento das conexões
     if conexao:
-        cursor.close(
-            conexao.close()
-        )
+        cursor.close()
+        conexao.close()
+        

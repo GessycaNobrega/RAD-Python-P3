@@ -6,14 +6,14 @@ try:
     cursor = conexao.cursor()
 
     #Execução de um comando... CREAT, SELECT 
-    comando = '''CREATE TABLE Veiculo (
+    comando = '''CREATE TABLE IF NOT EXISTS Veiculo (
                    placa CHARACTER(7) NOT NULL,
                    ano INTEGER NOT NULL,
                    cor TEXT NOT NULL,
                    proprietario INTEGER NOT NULL,
                    marca INTEGER NOT NULL,
                    PRIMARY KEY (placa),
-                   FOREIGN KEY(proprietario) REFERENCES Pessoa(cpf),
+                   FOREIGN KEY(proprietario) REFERENCES people(cpf),
                    FOREIGN KEY(marca) REFERENCES Marca(id)
                    );'''
     

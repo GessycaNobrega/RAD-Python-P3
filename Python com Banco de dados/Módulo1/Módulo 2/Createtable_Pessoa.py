@@ -16,7 +16,7 @@ try:
     cursor = conexao.cursor()
 
     #Execução de um comando... CREAT, SELECT 
-    comando = '''CREATE TABLE Pessoa (
+    comando = '''CREATE TABLE IF NOT EXISTS Pessoa (
                 cpf INTEGER NOT NULL,
                 nome TEXT NOT NULL,
                 nascimento DATE NOT NULL,

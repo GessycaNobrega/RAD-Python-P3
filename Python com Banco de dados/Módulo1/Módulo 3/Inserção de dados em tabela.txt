@@ -1,0 +1,25 @@
+Para inserir registros em uma tabela, utilizamos o comando INSERT INTO, do SQL.
+
+
+
+Para ilustrar a utilização desse comando, vamos inserir o seguinte registro na tabela Pessoa:
+
+CPF: 12345678900
+
+Nome: João
+
+Data de Nascimento: 31/01/2000
+
+Usa óculos: Sim (True)
+
+O Comando SQL para inserção desses dados é o seguinte:
+
+INSERT INTO Pessoa (cpf, nome, nascimento, oculos)
+VALUES (12345678900, 'João', '2000-01-31', 1);
+
+Observe que alteramos a formatação da data para se adequar ao padrão de alguns bancos de dados, como MySQL e PostgreSQL.
+
+
+Inserção de dados em tabela com queries dinâmicas:
+
+Para indicar que a string de um comando contém parâmetros que precisam ser substituídos antes da sua execução, utilizamos delimitadores. Esses delimitadores também estão previstos na PEP 249 e podem ser: “?”, “%s”, entre outros.

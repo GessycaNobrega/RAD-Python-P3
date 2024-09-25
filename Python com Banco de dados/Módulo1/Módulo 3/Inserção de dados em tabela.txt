@@ -23,3 +23,42 @@ Observe que alteramos a formatação da data para se adequar ao padrão de algun
 Inserção de dados em tabela com queries dinâmicas:
 
 Para indicar que a string de um comando contém parâmetros que precisam ser substituídos antes da sua execução, utilizamos delimitadores. Esses delimitadores também estão previstos na PEP 249 e podem ser: “?”, “%s”, entre outros.
+
+
+Na biblioteca do SQLite, utilizamos o delimitador “?”.
+
+Para ilustrar a utilização do delimitador “?” em SQLite, considere o comando a seguir: >>> comando = “INSERT INTO tabela1 (atributo1, atributo2) VALUES (?, ?);”  => Esse comando indica que, ao ser chamado pelo método execute, devemos passar dois parâmetros, um para cada interrogação. Esses parâmetros precisam estar em um iterável, como em uma tupla ou lista.
+
+
+Veja a seguir como poderia ficar a chamada do método execute para esse comando:
+cursor.execute(comando, (“Teste”, 123))
+
+A partir da string e da tupla, é montado o comando final, que é traduzido para:
+“INSERT INTO tabela1 (atributo1, atributo2) VALUES (‘Teste’, 123);”
+
+
+
+#criação de um objeto do tipo Pessoa:
+pessoa = Pessoa(1111111111, "Maria", '1998-06-13', False)
+=> Na linha 9, utilizamos o construtor da classe Pessoa para criar um objeto com os seguintes atributos: CPF: 10000000099, Nome: Maria, Data de Nascimento: 31/01/1990 e Usa óculos: Não (False). O valor False será convertido para 0 durante a execução do método execute.
+
+
+
+
+
+
+DEFINIÇÃO DE UM COMANDO COM QUERY PARAMENTER:
+
+'''INSERT INTO Pessoa(cpf, nome, nascimento, oculos) Values (?,?,?,?);'''
+cursor.execute(comando (pessoa.cpf, pessoa.nome, pessoa.nascimento, pessoa.usa_oculos)) => Na linha 12, definimos a string que conterá o comando para inserir um registro na tabela Pessoa. Observe como estão representados os valores dos atributos! Estão todos com o delimitador representado pelo caractere interrogação (?)!
+
+
+cursor.execute(comando (pessoa.cpf, pessoa.nome, pessoa.nascimento, pessoa.usa_oculos)) => Na linha 13, chamamos o método execute utilizando, como segundo argumento, uma tupla com os atributos do objeto pessoa 
+
+Cada elemento dessa tupla irá ocupar o lugar de uma interrogação, respeitando a ordem com que aparecem na tupla.
+
+
+O comando final enviado ao banco de dados pelo comando execute foi:
+
+INSERT INTO Pessoa (cpf, nome, nascimento, oculos)
+VALUES (10000000099, 'Maria', '1990-01-31', 0);

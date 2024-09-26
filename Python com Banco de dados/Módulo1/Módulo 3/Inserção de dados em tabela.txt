@@ -94,3 +94,64 @@ cursor = conexao.cursor()
 
 
 #Criação de um objeto do tipo de pessoa
+pessoa = Pessoa(20000000030, 'jose', '1990-02-28', False)
+
+
+#Definição de um comando com query paramenter
+comando = '''INSERT INTO TABLE Pessoa (cpf, nome, nascimento, oculos)
+                    VALUES (:cpf, :nome, :data_nascimento, :usa_oculos);'''
+cursor.execute(comando, {"cpf": pessoa.cpf,
+                         "nome": pessoa.nome,
+                         "data_nascimento": pessoa.data_nascimento,
+                         "usa_oculos": pessoa.usa_oculos})
+
+
+O comando final enviado ao banco de dados pelo comando execute foi: INSERT INTO Pessoa (cpf, nome, nascimento, oculos)
+VALUES (20000000099,'José','1990-02-28',0);
+
+
+Observe que nosso código está crescendo. Imagine se tivéssemos uma entidade com dezenas de atributos? A chamada do método execute da linha 14 cresceria proporcionalmente, comprometendo muito a leitura do nosso código.
+
+A seguir, vamos simplificar nosso código, de forma que ele permaneça legível, independentemente do número de atributos de uma entidade.
+
+Como vamos inserir uma pessoa com todos os atributos, vamos manter apenas os argumentos nomeados no comando SQL
+
+
+No próximo exemplo, vamos simplificar mais um pouco nosso código, removendo o nome das colunas no comando SQL e utilizando a função interna vars do Python que converte objetos em dicionários. 
+
+
+
+
+#Definição de um comando com named paramenter
+comando = '''INSERT INTO TABLE Pessoa (cpf, nome, nascimento, oculos)
+                    VALUES (:cpf, :nome, :data_nascimento, :usa_oculos);'''
+cursor.execute(comando, vars(Pessoa))
+print(vars(Pessoa))
+
+
+Na linha 12, criamos o comando SQL “INSERT INTO”, onde suprimimos o nome das colunas após o nome da tabela Pessoa.
+
+Na linha 13, utilizamos o método execute passando como segundo argumento vars(pessoa).
+
+A função interna vars retorna todos os atributos de um objeto na forma de dicionário, no qual cada chave é o nome de um atributo.
+
+Observe na saída do console onde imprimimos o resultado de vars(pessoa), linha 14, e destacado a seguir:
+
+{'cpf': 30000000099, 'nome': 'Silva', 'data_nascimento': '1990-03-30', 'usa_oculos': True}
+
+O comando final enviado ao banco de dados pelo comando execute foi:
+
+
+INSERT INTO Pessoa VALUES (30000000099,'Silva','1990-03-30',1);
+
+
+Atualização de dados em uma tabela
+
+Agora que já sabemos como inserir um registro em uma tabela, vamos aprender a atualizar os dados de um registro.
+
+Para atualizar um registro, utilizamos o comando SQL UPDATE. Sua sintaxe é a seguinte:
+
+
+UPDATE tabela1
+SET coluna1 = valor1, coluna2 = valor2...
+WHERE [condição];

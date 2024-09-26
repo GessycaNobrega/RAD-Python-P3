@@ -62,3 +62,35 @@ O comando final enviado ao banco de dados pelo comando execute foi:
 
 INSERT INTO Pessoa (cpf, nome, nascimento, oculos)
 VALUES (10000000099, 'Maria', '1990-01-31', 0);
+
+
+
+ Inserção de dados em tabela com queries dinâmicas e nomes
+
+ Além da utilização do caractere “?” como delimitador de parâmetros, o sqlite3 também possibilita a utilização de argumentos nomeados.
+
+A utilização de argumentos nomeados funciona de forma similar à chamada de funções utilizando os nomes dos parâmetros.
+
+Nessa forma de construção de queries dinâmicas, ao invés de passar uma tupla, devemos passar um dicionário para o método execute. Ele será utilizado para preencher corretamente os valores dos atributos.
+
+
+Para ilustrar a utilização dos argumentos nomeados em SQLite, considere o comando a seguir:
+>>> comando = INSERT INTO tabela1 (atributo1, atributo2) VALUES (:atrib1, :atrib2);
+
+Esse comando indica que ao ser chamado pelo método execute, devemos passar um dicionário com duas chaves, sendo uma “atrib1” e outra “atrib2”. Observe que há dois pontos (“:”) antes do argumento nomeado!
+
+Veja a seguir como poderia ficar a chamada do método execute para esse comando:
+>>> cursor.execute(comando, {“atrib1”:“Teste”, “atrib2”: 123})
+
+
+Observe o exemplo da Figura 14, onde vamos criar um script similar ao anterior, no qual vamos utilizar novamente a classe Pessoa, porém o comando para inserir um registro no banco de dados utiliza os argumentos nomeados.
+
+import sqlite3 as conector
+from modelo import Pessoa
+
+# Abertura de conexão e aquisição de cursor
+conexao = conector.connect("./meu_banco.db")
+cursor = conexao.cursor()
+
+
+#Criação de um objeto do tipo de pessoa

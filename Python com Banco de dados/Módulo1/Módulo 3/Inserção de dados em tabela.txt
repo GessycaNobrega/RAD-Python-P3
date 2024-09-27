@@ -195,3 +195,18 @@ Na linha 15, criamos mais um comando de UPDATE, desta vez utilizando o argumento
 
 Onde vamos alterar o valor do atributo oculos para zero (falso) para quem tem cpf igual a 20000000099.
 
+*********************************************
+
+Remoção de dados de uma tabela
+
+Para remover um registro, utilizamos o comando SQL DELETE. Sua sintaxe é a seguinte: 
+
+DELETE FROM tabela1
+WHERE [condição];
+
+
+Assim como nos outros comandos, podemos montar o comando DELETE de três formas. Uma string sem delimitadores, uma string com o delimitador “?” ou uma string com argumentos nomeados. Todos para a condição da cláusula WHERE.
+
+O comando final enviado ao banco de dados pelo comando execute foi: 
+  
+DELETE FROM Pessoa WHERE cpf=12345678900;

@@ -1,3 +1,5 @@
+#A solução do problema no script 4 será a junção, ou seja , o JOIN 
+
 import sqlite3 as conector
 from modelo import Veiculo
 
@@ -5,10 +7,12 @@ from modelo import Veiculo
 conexao=conector.connect("meu_banco.db")
 cursor = conexao.cursor()
 
-#Definicão dos comandos
-
-comando = ''' SELECT * FROM Veiculo; '''
+comando = '''SELECT 
+                Veiculo.placa, Veiculo.ano, Veiculo.cor,
+                Veiculo.motor, Veiculo.proprietario,
+                Marca.nome FROM Veiculo JOIN ON Marca.id = Veiculo.marca;'''
 cursor.execute(comando)
+
 
 #Recuperação dos registros 
 
@@ -21,7 +25,3 @@ for reg_veiculo in reg_veiculos:
 
 cursor.close()
 conexao.close()
-
-#Esse script está correto, porém, a saída dele irá trazer na marca o resulto: "Marca 1" e "Marca 2 " e esse número 1 e 2 não se refere ao nome ou sigla da marca, e sim ao ID dessas marcar. O nome mesmo é MARCA A e MARCA B.
-
-#No script 5 será verificado como mostrar o nome da marca

@@ -1,0 +1,5 @@
+#Seleção de registros utilizando junção e de registros relacionados
+
+
+
+script => 4

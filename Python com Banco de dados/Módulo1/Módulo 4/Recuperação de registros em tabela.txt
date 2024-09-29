@@ -1,3 +1,7 @@
+
+script => 1,2,3
+
+
 # Seleção de registros de uma tabela
 
 #Para selecionar e recuperar registros de um banco de dados, utilizamos o comando SQL SELECT. Aqui está sua sintaxe:

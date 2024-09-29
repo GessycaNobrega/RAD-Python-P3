@@ -1,0 +1,149 @@
+# Seleção de registros de uma tabela
+
+#Para selecionar e recuperar registros de um banco de dados, utilizamos o comando SQL SELECT. Aqui está sua sintaxe:
+
+SELECT coluna1, coluna2, ... FROM tabela1
+WHERE [condição]; 
+*************************************************************
+
+No exemplo a seguir, vamos mostrar como recuperar todos os registros da tabela Pessoa.
+
+ import sqlite3 as conector
+
+ # Abertura de conexão e aquisição de cursor
+ conexao = conector.connect("./meu_banco.db")
+ cursor = conexao.cursor()
+
+ # Definição dos registros
+ comando = '''SELECT nome, oculos FROM Pessoa;'''
+ cursor.execute(comando)
+
+ # Recuperação dos dados
+ registros = cursor.fetchall()
+ print("Tipo retornado pelo fetchall():", type(registros))
+
+for registro in registros:
+    print("Tipo:", type(registro), "- Conteúdo:", registro)
+
+ # Fechamento das conexões
+ cursor.close()
+ conexao.close()
+
+
+ O resultado do script anterior é: 
+
+ D:\Banco de dados> & C:python.exe "d:Banco de dados/script16.py"
+
+Tipo retornado pelo fetchall():
+Tipo: - Conteúdo: ('Maria', 0)
+Tipo: - Conteúdo: ('João', 1)
+Tipo: - Conteúdo: ('Silva', 1)
+
+
+Acompanhe agora o passo a passo da recupeção de todos os registros da tabela Pessoa.
+
+Executamos o comando na linha 9 e utilizamos o método fetchall do cursor para recuperar os registros selecionados.
+Atribuímos o retorno do método à variável registros.
+O objeto retornado pelo método fetchall é do tipo lista, impresso pela linha 13 e que pode ser observado pelo console.
+Na linha 15, iteramos sobre os elementos retornados e, na linha 16, imprimimos o tipo e o conteúdo dos registros.
+Ao final, fechamos o cursor e a conexão.
+
+Atenção!
+Como o SQLite não cria uma transação para o comando SELECT, não é necessário executar o commit.
+
+***********************************************************************
+
+
+Vamos criar agora uma consulta para retornar às pessoas que usam óculos. Observe como ficou o exemplo:
+
+import sqlite3 as conector
+ from modelo import Pessoa
+ # Abertura de conexão e aquisição de cursor
+ conexao = conector.connect("./meu_banco.db")
+ cursor = conexao.cursor()
+
+ # Definição dos comandos
+ comando = '''SELECT * FROM Pessoa WHERE oculos=:usa_oculos;'''
+ cursor.execute(comando, {"usa_oculos": True})
+
+ # Recuperação dos registros
+ registros = cursor.fetchall()
+ for registro in registros:
+      pessoa = Pessoa(*registro)
+      print("cpf:", type(pessoa.cpf), pessoa.cpf)
+      print("nome:", type(pessoa.nome), pessoa.nome)
+      print("nascimento:", type(pessoa.data_nascimento), pessoa.data_nascimento)
+      print("oculos:", type(pessoa.usa_oculos), pessoa.usa_oculos)
+
+ # Fechamento das conexões
+ cursor.close()
+ conexao.close()
+
+
+ Observe o resultado/saída do script anterior.
+
+D:\Banco de dados> & C:python.exe "d:/Banco de dados/script17.py"
+cpf: <class 'int'> 12345678900
+nome: <class 'str'> João
+nascimento: <class 'str'> 2000-01-31
+oculos: <class 'int'> 1
+cpf: <class 'int'> 30000000099
+nome: <class 'str'> Silva
+nascimento: <class 'str'> 1990-03-30
+oculos: <class 'int'> 1
+
+
+*************************************
+
+Se estivéssemos utilizando o banco de dados PostgreSQL com o conector psycopg2, como os tipos DATE e BOOLEAN são suportados, esses valores seriam convertidos para o tipo correto.
+
+
+O conector sqlite3 permite realizar essa conversão automaticamente, mas exige algumas configurações adicionais.
+
+Vamos mostrar agora como fazer a conversão de datas e booleanos:
+
+
+ import sqlite3 as conector
+ from modelo import Pessoa
+ # Abertura de conexão e aquisição de cursor
+ conexao = conector.connect("./meu_banco.db", detect_types=conector.PARSE_DECLTYPES)
+ cursor = conexao.cursor()
+
+ # Funções conversoras
+ def conv_bool(dado):
+    return True if dado == 1 else False
+
+ # Registro de conversores
+ conector.register_converter("BOOLEAN", conv_bool)
+
+ # Definição dos comandos
+ comando = '''SELECT * FROM Pessoa WHERE oculos=:usa_oculos;'''
+ cursor.execute(comando, {"usa_oculos": True})
+
+# Recuperação dos registros
+registros = cursor.fetchall()
+for registro in registros:
+    pessoa = Pessoa(*registro)
+    print("cpf:", type(pessoa.cpf), pessoa.cpf)
+    print("nome:", type(pessoa.nome), pessoa.nome)
+    print("nascimento:", type(pessoa.data_nascimento), pessoa.data_nascimento)
+    print("oculos:", type(pessoa.usa_oculos), pessoa.usa_oculos)
+
+# Fechamento das conexões
+cursor.close()
+conexao.close()
+
+
+Confira o resultado/saída do script anterior:
+
+D:\Banco de dados> & C:/python.exe "d:/Banco de dados/script18.py"
+cpf: <class 'int'> 12345678900
+nome: <class 'str'> João
+nascimento: <class 'datetime.date'> 2000-01-31
+oculos: <class 'bool'> False
+cpf: <class 'int'> 30000000099
+nome: <class 'str'> Silva
+nascimento: <class 'datetime.date'> 1990-03-30
+oculos: <class 'bool'> False
+
+

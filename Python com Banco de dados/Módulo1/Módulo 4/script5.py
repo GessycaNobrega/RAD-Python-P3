@@ -33,3 +33,11 @@ for reg_veiculo in reg_veiculos:
  # Fechamento das conexões
 cursor.close()
 conexao.close()
+
+
+#Resultado da saída:
+
+# D:\Banco de dados> & C:/python.exe "d:/Banco de dados/script19_2.py" Placa: AAA0001 , Marca: Marca A
+# Placa: BAA0002 , Marca: Marca A
+# Placa: CAA0003 , Marca: Marca B
+# Placa: DAA0004 , Marca: Marca B

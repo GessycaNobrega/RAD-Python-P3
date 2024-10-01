@@ -4,7 +4,7 @@
 
 pip install Kivy
 
-Uma forma de testar a instalação é escrever e executar o programa:
+#Uma forma de testar a instalação é escrever e executar o programa:
 
 from kivy.app import App
 from kivy.uix.button import Button

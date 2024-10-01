@@ -1,0 +1,3 @@
+Cada um dos arquivos desse módulo, mostram a instalação de frameworks e bibliotecas GUI do Python
+
+A linguagem python possui muitos frameworks para desenvolvimento de aplicações de interface gráfica para interação com o usuário, chamadas, comumente, de GUI (Graphical User Interface).

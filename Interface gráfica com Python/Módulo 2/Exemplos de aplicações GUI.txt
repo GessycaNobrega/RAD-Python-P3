@@ -1,0 +1,15 @@
+Desenvolvendo exemplos de apliaçãoes GUI:
+
+Vamos apresentar exemplos dos componentes:
+
+Window
+Label
+Button
+Entry
+Radiobutton
+Checkbox
+Text
+Message
+Sliders
+Dialog
+Combobox

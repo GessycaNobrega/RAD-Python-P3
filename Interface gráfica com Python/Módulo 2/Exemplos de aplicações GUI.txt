@@ -2,14 +2,59 @@ Desenvolvendo exemplos de apliaçãoes GUI:
 
 Vamos apresentar exemplos dos componentes:
 
-Window
-Label
-Button
-Entry
-Radiobutton
-Checkbox
-Text
-Message
+Window:
+
+É um widget de contêiner que pode conter qualquer número de painéis, organizados horizontalmente ou verticalmente.
+
+****************************************************************************
+Label:
+
+É usado para fornecer uma legenda de linha única para outros widgets. Também pode conter imagens.
+****************************************************************************
+
+Button: 
+
+É usado para exibir os botões na aplicação. São usados, por exemplo, para confirmar uma ação de salvar os dados.
+
+****************************************************************************
+
+Entry:
+
+É usado para exibir uma caixa de texto de linha única para que o usuário digite valores de entrada.
+
+****************************************************************************
+
+Radiobutton:
+
+É usado para exibir várias opções, como botões de rádio. O usuário pode selecionar apenas uma opção por vez.
+
+****************************************************************************
+
+Checkbox:
+
+É usado para fornecer uma lista de opções para um usuário.
+
+****************************************************************************
+
+Text:
+
+É usado para exibir texto em várias linhas
+
+****************************************************************************
+
+Message:
+
+É usado para exibir uma mensagem de texto e um botão para o usuário confirmar uma ação/td>
+
+****************************************************************************
+
 Sliders
+
+É usado para fornecer um widget de controle deslizante.
+
+****************************************************************************
 Dialog
+
+****************************************************************************
+
 Combobox
